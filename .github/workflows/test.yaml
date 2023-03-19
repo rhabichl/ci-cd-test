@@ -7,6 +7,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+
+      # set up testing-env
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -14,10 +16,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+
+      # build and test the programm
       - name: Build
         run: mvn --batch-mode -DskipTests package
       - name: Test
         run: mvn --batch-mode -Dmaven.test.failure.ignore=true verify
+
+      # optional: prettify output
       - name: Report
         uses: dorny/test-reporter@v1
         if: always()
