@@ -1,0 +1,21 @@
+name: Run automated tests on push
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: mvn --batch-mode -DskipTests package
+      - name: Test
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true verify
+      - name: Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Maven Tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+          fail-on-error: true
