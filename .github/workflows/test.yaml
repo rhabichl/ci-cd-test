@@ -7,7 +7,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-
+      # start database
+      - name: Start Docker-Container
+        run: docker-compose up -d
       # set up testing-env
       - name: Checkout
         uses: actions/checkout@v3
