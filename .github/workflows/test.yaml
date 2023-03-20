@@ -24,3 +24,8 @@ jobs:
       # build and test the programm
       - name: Test
         run: mvn --batch-mode --update-snapshots verify
+
+      - name: Greet person
+        run: echo "hello $NAME"
+        env:
+          NAME: Sengseis
