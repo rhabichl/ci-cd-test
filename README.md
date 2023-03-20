@@ -21,11 +21,11 @@ Der Workflow enthält einen oder mehrere Aufträge, die nacheinander oder gleich
 jobs:
   test:
     runs-on: ubuntu-latest
-	steps:
-	  - name: demonstration action
-        uses: actions/checkout@v3
-	  - name: demonstration script
-		run: echo "Hello World"
+    steps:
+     - name: demonstration action
+       uses: actions/checkout@v3
+     - name: demonstration script
+       run: echo "Hello World"
 ```
 
 ### Aktionen
@@ -78,7 +78,7 @@ Danerach wird über eine Github Aktion Java Version 17 installiert. Durch die An
   with:
     java-version: '17'
     distribution: 'adopt'
-	  cache: maven
+    cache: maven
 ...
 ```
 
