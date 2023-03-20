@@ -21,13 +21,3 @@ jobs:
       # build and test the programm
       - name: Test
         run: mvn --batch-mode --update-snapshots verify
-
-      # optional: prettify output
-      - name: Report
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Maven Tests
-          path: target/surefire-reports/*.xml
-          reporter: java-junit
-          fail-on-error: true
